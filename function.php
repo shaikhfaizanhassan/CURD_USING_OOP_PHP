@@ -1,5 +1,6 @@
 <?php  
 	//Define a constant variable
+	//working
 	define('dbserver', 'localhost');
 	define('dbuser', 'root');
 	define('dbpass', '');
