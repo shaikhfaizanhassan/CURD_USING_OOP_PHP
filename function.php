@@ -42,7 +42,7 @@
 		//function update all record using giving ID
 		public function UpdateData($stdid,$name,$email,$password)
 		{
-			$update = mysqli_query($this->dbh,"update from student set name='$name', email='$email', password='$password' where id='$stdid'");
+			$update = mysqli_query($this->dbh,"update  studenttb set name='$name', email='$email', password='$password' where id='$stdid'");
 			return $update;
 		}
 		//function delete all record using giving ID

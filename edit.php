@@ -5,8 +5,9 @@
         $did = $_GET["editID"];
         $obj = new Database();
         $sql = $obj->SelectDataBYID($did);
-        while($row = mysqli_fetch_array($sql))
-        {
+       $row = mysqli_fetch_array($sql);
+        
+
 ?>
 
 <!DOCTYPE html>
@@ -52,20 +53,23 @@
 </html>
 <?php 
 	
-	$insertData = new Database();
+	$obj = new Database();
 	if(isset($_POST['btn']))
 	{
+        $did = $_GET["editID"];
 		$name = $_POST['txtname'];
 		$email = $_POST['txtemail'];
 		$pass = $_POST['txtpass'];
 
-		$sqlI = $insertData->insert($name,$email,$pass);
+		$sqlI = $obj->UpdateData($did,$name,$email,$pass);
 		if($sqlI)
 		{
-			echo '<script>swal("Good job!", "Data Save!", "success");</script>';
+			
+            echo '<script>window.location.href="read.php";</script>';
+            
 		}
 			
 	}
  ?>		
 
-<?php } }?>
+<?php } ?>
