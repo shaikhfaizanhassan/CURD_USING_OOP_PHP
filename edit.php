@@ -1,3 +1,14 @@
+<?php 
+    include("function.php");
+    if(isset($_GET["editID"]))
+    {
+        $did = $_GET["editID"];
+        $obj = new Database();
+        $sql = $obj->SelectDataBYID($did);
+        while($row = mysqli_fetch_array($sql))
+        {
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +21,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1>Create New Record</h1>
+		<h1>Edit Record</h1>
 		<a href="read.php" class="btn btn-success">View Student </a>
 		<br>
 		<br>
@@ -18,15 +29,15 @@
 			<table class="table">
 				<tr>
 					<td>NAME</td>
-					<td><input type="text" name="txtname" class="form-control"></td>
+					<td><input type="text" value="<?php echo $row[1] ?>" name="txtname" class="form-control"></td>
 				</tr>
 				<tr>
 					<td>EMAIL</td>
-					<td><input type="text" name="txtemail" class="form-control"></td>
+					<td><input type="text" value="<?php echo $row[2] ?>" name="txtemail" class="form-control"></td>
 				</tr>
 				<tr>
 					<td>PASSWORD</td>
-					<td><input type="password" name="txtpass" class="form-control"></td>
+					<td><input type="text" value="<?php echo $row[3] ?>" name="txtpass" class="form-control"></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -40,7 +51,7 @@
 </body>
 </html>
 <?php 
-	include("function.php");
+	
 	$insertData = new Database();
 	if(isset($_POST['btn']))
 	{
@@ -56,3 +67,5 @@
 			
 	}
  ?>		
+
+<?php } }?>
